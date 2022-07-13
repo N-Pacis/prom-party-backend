@@ -137,6 +137,115 @@
                     }
                 }
             }
+        },
+        "/votes/by-couples": {
+            "get": {
+                "tags": [
+                    "VOTING CONTROLLER"
+                ],
+                "summary": "Get votes by couples",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/votes/couples/{id}": {
+            "get": {
+                "tags": [
+                    "VOTING CONTROLLER"
+                ],
+                "summary": "Get votes by couple Id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the couple",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/vote": {
+            "post": {
+                "tags": [
+                    "VOTING CONTROLLER"
+                ],
+                "summary": "Vote a couple",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in" : "body",
+                        "name" : "body",
+                        "type" : "object",
+                        "consumes" : "application/json",
+                        "properties": {
+                            "Names" : {
+                                "type" : "string",
+                                "required": "true"
+                            },
+                            "Email" : {
+                                "type" : "string",
+                                "required": "true"
+                            },
+                            "coupleId" : {
+                                "type" : "string",
+                                "required": "true"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     }
 }

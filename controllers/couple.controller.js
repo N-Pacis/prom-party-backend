@@ -50,6 +50,16 @@ export const createCouple = async (req, res) => {
             'GirlName',
         ])
 
+        let findCoupleByBoyname = await Couple.findOne({BoyName})
+        if(findCoupleByBoyname) return res.status(400).send({
+            message: "Boy already registered"
+        })
+
+        let findCoupleByGirlname = await Couple.findOne({GirlName})
+        if(findCoupleByGirlname) return res.status(400).send({
+            message: "Girl already registered"
+        })
+
         let couple = new Couple({
             BoyName,
             GirlName

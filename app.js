@@ -15,6 +15,7 @@ const swaggerJson = require("./swagger.json");
 
 //routes
 import coupleRoutes from "./routes/couples.routes.js";
+import votingRoutes from "./routes/voting.routes.js";
 
 app.use(cors());
 app.use(corsFunction);
@@ -26,7 +27,7 @@ app.use(urlencoded({extended: true}));
 
 app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerJson));
 app.use(coupleRoutes);
-
+app.use(votingRoutes)
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

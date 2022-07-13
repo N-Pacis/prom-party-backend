@@ -113,6 +113,46 @@
                 }
             }
         },
+        "/couples/{id}/upload-image": {
+            "post": {
+                "tags": [
+                    "COUPLE CONTROLLER"
+                ],
+                "summary": "Upload couple image",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the couple",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"coupleImage",
+                        "description":"Image of the couple",
+                        "type":"file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
         "/couples": {
             "get": {
                 "tags": [

@@ -10,6 +10,10 @@ const coupleSchema = new Schema({
         type:String,
         required:true
     },
+    coupleImage:{
+        type: Object,
+        default: null
+    },
     CreatedAt:{
         type:Date,
         default:null

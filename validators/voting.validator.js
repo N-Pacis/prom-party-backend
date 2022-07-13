@@ -13,7 +13,7 @@ export async function validateVoting(req, res, next) {
         if (error) {
             return res.status(400).json({
                 error: error.message,
-                message: "Unable to create the account."
+                message: "Unable to vote."
             })
         }
         return next()

@@ -1,0 +1,142 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Made with ❤️ by Nkubito Pacis & Mutegetsi Prince",
+        "title": "PROM PARTY KING AND QUEEN AUTOMATION",
+        "termsOfService": "http://swagger.io/terms/",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        } ,
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "name": "COUPLE CONTROLLER"
+        },
+        {
+            "name": "VOTING CONTROLLER"
+        }     
+    ],
+    "security":[
+        {
+            "Bearer":[]
+        }
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "bearerFormat":"JWT",
+            "scheme":"bearer"
+        }
+    },
+    "paths":{
+        "/couples/new": {
+            "post": {
+                "tags": [
+                    "COUPLE CONTROLLER"
+                ],
+                "summary": "Register a new couple",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in" : "body",
+                        "name" : "body",
+                        "type" : "object",
+                        "consumes" : "application/json",
+                        "properties": {
+                            "BoyName" : {
+                                "type" : "string",
+                                "required": "true"
+                            },
+                            "GirlName" : {
+                                "type" : "string",
+                                "required": "true"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/couples/{id}": {
+            "get": {
+                "tags": [
+                    "COUPLE CONTROLLER"
+                ],
+                "summary": "Get a couple by id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the couple",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/couples": {
+            "get": {
+                "tags": [
+                    "COUPLE CONTROLLER"
+                ],
+                "summary": "Get all couples",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
+}

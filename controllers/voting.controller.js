@@ -9,13 +9,13 @@ export async function getVotesByCouples(req, res) {
     try {
         let couples = await Couple.find()
         var votesArr = []
-        couples.map(async (couple)=>{
-            let votes = await Vote.find({coupleId: couple._id})
+        for(let i=0;i<couples.length;i++){
+            let votes = await Vote.find({coupleId: couples[i]._id})
             votesArr.push({
-                couple,
+                couple: couples[i],
                 votesCount: votes.length 
             })
-        })
+        }
         return res.status(200).send({
             status: 200,
             message: "ok",

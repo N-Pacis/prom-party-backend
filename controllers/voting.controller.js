@@ -88,7 +88,7 @@ export const createVote = async (req, res) => {
         })
         const time = new Date();
 
-        couple.CreatedAt = time
+        vote.CreatedAt = time
 
         let result = await vote.save()
         return res.json({
